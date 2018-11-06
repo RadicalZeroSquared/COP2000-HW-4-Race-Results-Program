@@ -1,0 +1,135 @@
+#include <iostream>
+#include <string>
+using namespace std;
+
+//The purpose of this program is to calculate the winner of a 3-man race and calculate the averages time
+// Marcos Dos Santos
+// November 6th, 2018
+// COP2000
+//HW #4
+
+
+void welcome();
+void getRaceTimes(string &, string &, string &, double &, double &, double &);
+void findWinner(string, string, string, double, double, double);
+void raceAverage(double, double, double);
+
+int main()
+{
+    string racer_name_1, racer_name_2, racer_name_3;
+    double racer_time_1 = 100, racer_time_2 = 100, racer_time_3 = 100;
+
+
+    welcome();
+    getRaceTimes(racer_name_1, racer_name_2, racer_name_3, racer_time_1, racer_time_2, racer_time_3);
+    findWinner(racer_name_1, racer_name_2, racer_name_3, racer_time_1, racer_time_2, racer_time_3);
+    raceAverage(racer_time_1, racer_time_2, racer_time_3);
+    
+    return 0;
+   
+}
+
+void raceAverage(double racer_time_1, double racer_time_2, double racer_time_3)
+    {
+        cout << "Overall Race Time Average: " << (racer_time_1+racer_time_2+racer_time_3) / 3.00 << endl;
+    }
+void findWinner(string racer_name_1, string racer_name_2, string racer_name_3, double racer_time_1, double racer_time_2, double racer_time_3)
+    {
+        if (racer_time_1 < racer_time_2 && racer_time_1 < racer_time_3)
+        {
+		cout << "Congratulations " << racer_name_1 << "!!! You are the winner!!";
+		cout << "***** Your winning time is: " << racer_time_1 << " *****";
+        }
+        
+        else if (racer_time_2 < racer_time_1 && racer_time_2 < racer_time_3)
+        {
+		cout << "Congratulations " << racer_name_2 << "!!! You are the winner!!";
+		cout << "***** Your winning time is: " << racer_time_2 << " *****";
+        }
+        
+        else if (racer_time_3 < racer_time_1 && racer_time_3 < racer_time_3)
+        {
+		cout << "Congratulations " << racer_name_3 << "!!! You are the winner!!";
+		cout << "***** Your winning time is: " << racer_time_3 << " *****";
+        }
+        
+        else if (racer_time_1 < racer_time_2 && racer_time_1 == racer_time_3)
+        {
+        cout << "We have a TIE, " << racer_name_1 << " and " << racer_name_3 << "!!";
+		cout << "***** Your winning time is: " << racer_time_1 << " *****";
+        }
+        
+        else if (racer_time_1 < racer_time_3 && racer_time_1 == racer_time_2)
+        {
+        cout << "We have a TIE, " << racer_name_1 << " and " << racer_name_2 << "!!";
+		cout << "***** Your winning time is: " << racer_time_1 << " *****";
+        }
+        
+        else if (racer_time_2 < racer_time_1 && racer_time_2 == racer_time_3)
+        {
+        cout << "We have a TIE, " << racer_name_2 << " and " << racer_name_3 << "!!";
+		cout << "***** Your winning time is: " << racer_time_2 << " *****";
+        }
+        
+        else if (racer_time_1 < racer_time_2 && racer_time_1 == racer_time_3)
+        {
+        cout << "We have a TIE, " << racer_name_1 << " and " << racer_name_3 << "!!";
+		cout << "***** Your winning time is: " << racer_time_1 << " *****";
+        }
+        
+        else
+        {
+        cout << "We have a 3 way TIE! No winner for this race..." ;
+        }
+        cout << "" << endl;
+    }
+
+void getRaceTimes(string &racer_name_1, string &racer_name_2, string &racer_name_3, double &racer_time_1, double &racer_time_2, double &racer_time_3)
+    {
+        cout << "Insert the first racer's name" << endl;
+        cin >> racer_name_1;
+        
+        cout << "Insert the first racer's time" << endl;
+        cin >> racer_time_1;
+        
+        while (racer_time_1 <= 0)
+        {
+            cout << "Invalid. Please try again." << endl;
+            cin >> racer_time_1;
+        }
+        
+        cout << "Insert the second racer's name" << endl;
+        cin >> racer_name_2;
+        
+        cout << "Insert the second racer's time" << endl;
+        cin >> racer_time_2;
+        
+        while (racer_time_2 <= 0)
+        {
+            cout << "Invalid. Please try again." << endl;
+            cin >> racer_time_2;
+        }
+        
+        cout << "Insert the third racer's name" << endl;
+        cin >> racer_name_3;
+        
+        cout << "Insert the third racer's time" << endl;
+        cin >> racer_time_3;
+        
+        while (racer_time_3 <= 0)
+        {
+            cout << "Invalid. Please try again." << endl;
+            cin >> racer_time_3;
+        }
+    }
+    
+void welcome()
+    {
+         cout << "*****************************************************************" << endl;
+         cout << "Welcome to Race Results Program" << endl;
+         cout << "You areAsked to Enter the Three Racer’s Names" << endl;
+         cout << "and Their Associated Race Time." << endl;
+         cout << "Please enter a real number for Race Time (the Race Time Must be > 0)." << endl;
+         cout << "Program Developed by: Marcos Dos Santos" << endl;
+         cout << "*****************************************************************" << endl; 
+    }
